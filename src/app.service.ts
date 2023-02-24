@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { Rooms } from './rooms';
+import { RoomList } from './rooms';
 
 @Injectable()
 export class AppService {
 
-  getRoomsList(): Rooms[] {
+  getRoomsList(): RoomList[] {
     return [
       {
-        roomNumber: 1,
+        roomNumber: '1',
         roomType: 'Deluxe Room',
         amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
         price: 500,
@@ -18,7 +18,7 @@ export class AppService {
         rating: 4.5
       },
       {
-        roomNumber: 2,
+        roomNumber: '2',
         roomType: 'Deluxe Room',
         amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
         price: 1000,
@@ -29,7 +29,7 @@ export class AppService {
         rating: 3.45654
       },
       {
-        roomNumber: 3,
+        roomNumber: '3',
         roomType: 'Private Suite',
         amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
         price: 15000,
@@ -42,15 +42,15 @@ export class AppService {
     ];
   }
 
-  addRooms(rooms: Rooms): Rooms[] {
+  addRooms(rooms: RoomList): RoomList[] {
     return [...this.getRoomsList(), rooms];
   }
 
-  deleteRooms(roomNumber: number): Rooms[] {
+  deleteRooms(roomNumber: string): RoomList[] {
     return this.getRoomsList().filter(room => room.roomNumber !== roomNumber);
   }
 
-  editRooms(rooms: Rooms): Rooms[] {
+  editRooms(rooms: RoomList): RoomList[] {
     return this.getRoomsList().map(room => {
       if (room.roomNumber === rooms.roomNumber) {
         return rooms;

@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common';
 import { AppService } from './app.service';
-import { Rooms } from './rooms';
+import { RoomList } from './rooms';
 
 @Controller()
 export class AppController {
@@ -9,22 +9,22 @@ export class AppController {
   }
 
   @Get()
-  getHello():  Rooms[] {
+  getHello():  RoomList[] {
     return this.appService.getRoomsList();
   }
 
   @Post()
-  addRooms(@Body() Rooms: Rooms): Rooms[] {
+  addRooms(@Body() Rooms: RoomList): RoomList[] {
     return this.appService.addRooms(Rooms);
   }
 
   @Put()
-  editRooms(rooms: Rooms): Rooms[] {
+  editRooms(rooms: RoomList): RoomList[] {
     return this.appService.editRooms(rooms);
   }
 
   @Delete()
-  deleteRooms(roomNumber: number): Rooms[] {
+  deleteRooms(roomNumber: string): RoomList[] {
     return this.appService.deleteRooms(roomNumber);
   }
 }
