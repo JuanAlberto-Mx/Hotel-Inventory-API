@@ -1,12 +1,13 @@
-import {Body, Controller, Delete, Get, Param, Post, Put} from '@nestjs/common';
-import {RoomsService} from "./rooms.service";
-import {CreateRoomDTO} from "./dto/create-room.dto";
-import {UpdateRoomDTO} from "./dto/update-room.dto";
+import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
+import { RoomsService } from './rooms.service';
+import { CreateRoomDTO } from './dto/create-room.dto';
+import { UpdateRoomDTO } from './dto/update-room.dto';
 
-@Controller('rooms')
+@Controller('api/Rooms')
 export class RoomsController {
 
-    constructor(private readonly roomsService: RoomsService) {}
+    constructor(private readonly roomsService: RoomsService) {
+    }
 
     @Post()
     create(@Body() createRoomDto: CreateRoomDTO) {
