@@ -1,8 +1,8 @@
-import {Body, Controller, Get, Post} from '@nestjs/common';
-import {BookingDTO} from "./dto/create-booking.dto";
-import {BookingService} from "./booking.service";
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { BookingDTO } from "./dto/create-booking.dto";
+import { BookingService } from "./booking.service";
 
-@Controller('booking')
+@Controller('api/booking')
 export class BookingController {
 
     constructor(private readonly bookingService: BookingService) {

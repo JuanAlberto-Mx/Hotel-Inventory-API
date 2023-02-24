@@ -1,10 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import {Room} from "./entities/room.entity";
-import {CreateRoomDTO} from "./dto/create-room.dto";
-import {UpdateRoomDTO} from "./dto/update-room.dto";
+import { CreateRoomDTO } from './dto/create-room.dto';
+import { UpdateRoomDTO } from './dto/update-room.dto';
+import { Room } from './entities/room.entity';
+import { v4 } from 'uuid';
 
 @Injectable()
 export class RoomsService {
+
     rooms: Room[] = [
         {
             roomNumber: '1',
@@ -40,12 +42,18 @@ export class RoomsService {
             rating: 2.6
         },
     ];
+
     create(createRoomDto: CreateRoomDTO) {
         console.log(createRoomDto);
+
         createRoomDto.roomNumber = v4();
+
         console.log(createRoomDto);
+
         this.rooms = [...this.rooms, createRoomDto];
+
         console.log(this.rooms);
+
         return this.rooms;
     }
 
@@ -62,6 +70,7 @@ export class RoomsService {
             if (room.roomNumber === id) {
                 return updateRoomDto;
             }
+
             return room;
         });
     }
